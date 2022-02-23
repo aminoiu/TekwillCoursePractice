@@ -1,4 +1,4 @@
-package com.tekwill.practice.stock.management.data;
+package com.tekwill.practice.management.stock.data;
 
 import java.util.Arrays;
 

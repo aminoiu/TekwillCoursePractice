@@ -1,15 +1,15 @@
-package com.tekwill.practice.stock.management.data;
+package com.tekwill.practice.management.stock.data;
 
-import com.tekwill.practice.stock.management.data.enums.Category;
+import com.tekwill.practice.management.stock.enums.ProductCategory;
 
 public class Product {
     private int id;
     private String name;
-    private Category category;
+    private ProductCategory category;
     private String madeOf;
     private double price;
 
-    public Product(int id, String name, Category category, String madeOf, double price) {
+    public Product(int id, String name, ProductCategory category, String madeOf, double price) {
         this.id = id;
         this.name = name;
         this.category = category;
@@ -33,11 +33,11 @@ public class Product {
         this.name = name;
     }
 
-    public Category getCategory() {
+    public ProductCategory getCategory() {
         return category;
     }
 
-    public void setCategory(Category category) {
+    public void setCategory(ProductCategory category) {
         this.category = category;
     }
 
