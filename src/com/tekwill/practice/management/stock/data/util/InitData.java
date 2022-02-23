@@ -16,7 +16,6 @@ public class InitData {
         Product product5 = new Product(5, "Valeriana", ProductCategory.MEDICINE, "MoldovaMedicine", 50);
         Product product6 = new Product(6, "Mezim", ProductCategory.MEDICINE, "MoldovaMedicine", 60);
         Product product7 = new Product(7, "Cheese 90%", ProductCategory.FOOD, "Latti", 115.5);
-
         return new Product[]{product1, product2, product3, product4, product5, product6, product7};
     }
 
