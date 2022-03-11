@@ -20,7 +20,6 @@ public class ProductInput {
         newProductMadeOf = validationInput.inputString();
         System.out.println("Enter the product price:");
         newProductPrice = validationInput.inputDouble();
-        validationInput.closeScanner();
         return new Product(id, newProductName, newProductCategory, newProductMadeOf, newProductPrice);
 
     }

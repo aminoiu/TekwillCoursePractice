@@ -41,7 +41,8 @@ public class OrderList {
     }
 
     public void deletePickedProductFromOrder(Order order, Product product) {
-        order.setProductsList(order.deleteProduct(product));
+//        order.setProductsList(order.deleteProduct(product));
+        order.updateProductsList(product);
     }
 
     public void printOrders() {

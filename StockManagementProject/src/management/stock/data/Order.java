@@ -3,6 +3,8 @@ package com.tekwill.practice.management.stock.data;
 import sun.security.util.ArrayUtil;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Order {
     private int id;
@@ -11,12 +13,22 @@ public class Order {
     private Product[] productsList;
     private int[] qtyList;
 
+
+    private Map<Product, Integer> productQtyMap = new HashMap<>();
+
     public Order(int id, String name, String customer, Product[] productsList, int[] qtyList) {
         this.id = id;
         this.name = name;
         this.customer = customer;
         this.productsList = productsList;
         this.qtyList = qtyList;
+    }
+
+    public Order(int id, String name, String customer, Map<Product, Integer> productQtyMap) {
+        this.id = id;
+        this.name = name;
+        this.customer = customer;
+        this.productQtyMap = productQtyMap;
     }
 
     public int getId() {
@@ -59,9 +71,19 @@ public class Order {
         this.qtyList = qtyList;
     }
 
+    public Map<Product, Integer> getProductQtyMap() {
+        return productQtyMap;
+    }
+
+    public void setProductQtyMap(Map<Product, Integer> productQtyMap) {
+        this.productQtyMap = productQtyMap;
+    }
+
     public void updateQtyAfterShortage(int stockAvailableQty, Product product) {
         int productIndex = getProductsIndex(product.getId());
         this.qtyList[productIndex] = this.qtyList[productIndex] - stockAvailableQty;
+
+        this.productQtyMap.put(product, stockAvailableQty);
     }
 
     private int getProductsIndex(int id) {
@@ -73,18 +95,6 @@ public class Order {
         }
         return i;
     }
-
-    @Override
-    public String toString() {
-        return "Order{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", customer='" + customer + '\'' +
-                ", \nproductsList=" + Arrays.toString(productsList) +
-                ", \nqtyList=" + Arrays.toString(qtyList) +
-                '}';
-    }
-
 
     public Product[] deleteProduct(Product product) {
         deleteFromQtyList(getProductsIndex(product.getId()));
@@ -106,5 +116,19 @@ public class Order {
             }
         }
         this.qtyList = newQtys;
+    }
+
+    public void updateProductsList(Product product) {
+        this.productQtyMap.remove(product);
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", customer='" + customer + '\'' +
+                ", \nproductsList=" + productQtyMap.toString() +
+                '}';
     }
 }
