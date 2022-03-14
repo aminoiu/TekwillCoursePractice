@@ -1,3 +1,5 @@
+package strings.problems;
+
 import java.util.Scanner;
 
 public class ValidationInput {
